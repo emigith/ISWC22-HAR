@@ -1,0 +1,12 @@
+
+# Python generated files
+__pycache__/
+*.pyc
+
+# Local Python environments
+.venv/
+
+# Downloaded and generated HAR data
+data/WISDM_Dataset/
+data/Sliding_window/
+data/Freq_data/
