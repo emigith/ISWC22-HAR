@@ -1,0 +1,12 @@
+condition,family,severity,n_windows,labels_changed,seed,description
+clean,clean,none,9947,0,1,Original held-out WISDM windows
+gaussian_005,gaussian_noise,sigma=0.05,9947,0,101,"Gaussian noise, 0.05 standardized units"
+gaussian_010,gaussian_noise,sigma=0.10,9947,0,102,"Gaussian noise, 0.10 standardized units"
+gaussian_020,gaussian_noise,sigma=0.20,9947,0,103,"Gaussian noise, 0.20 standardized units"
+missing_010,missing_packets,10%,9947,0,201,10% timestamps missing across all axes
+missing_030,missing_packets,30%,9947,0,202,30% timestamps missing across all axes
+drop_x,channel_dropout,X axis,9947,0,1,Complete loss of accelerometer X axis
+drop_y,channel_dropout,Y axis,9947,0,1,Complete loss of accelerometer Y axis
+drop_z,channel_dropout,Z axis,9947,0,1,Complete loss of accelerometer Z axis
+sampling_10hz,lower_sampling_rate,10 Hz,9947,0,1,20 Hz reduced to 10 Hz then interpolated
+sampling_5hz,lower_sampling_rate,5 Hz,9947,0,1,20 Hz reduced to 5 Hz then interpolated
