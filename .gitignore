@@ -10,3 +10,11 @@ __pycache__/
 data/WISDM_Dataset/
 data/Sliding_window/
 data/Freq_data/
+
+# Codespaces / local environments
+venv/
+oryx-build-commands.txt
+condaenv.*.requirements.txt
+
+# Trained model checkpoints
+*.pth
