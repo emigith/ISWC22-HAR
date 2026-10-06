@@ -18,3 +18,4 @@ condaenv.*.requirements.txt
 
 # Trained model checkpoints
 *.pth
+data/SIDDHA/
