@@ -379,9 +379,33 @@ print(f"Test weighted F1: {test_f_weighted:.4f}")
 print(f"Test Macro-F1: {test_f_macro:.4f}")
 print(f"Test micro F1: {test_f_micro:.4f}")
 
+test_metrics_path = output_dir / "test_metrics.csv"
+
+with test_metrics_path.open("w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow([
+        "best_epoch",
+        "test_loss",
+        "test_accuracy",
+        "test_weighted_f1",
+        "test_macro_f1",
+        "test_micro_f1",
+        "parameters",
+    ])
+    writer.writerow([
+        best_epoch,
+        float(test_loss),
+        test_acc,
+        test_f_weighted,
+        test_f_macro,
+        test_f_micro,
+        exp.model_size,
+    ])
+
 print()
 print("Parameters:", exp.model_size)
-print("Metrics saved to:", csv_path)
+print("Training metrics saved to:", csv_path)
+print("Test metrics saved to:", test_metrics_path)
 print("Checkpoint saved to:", checkpoint_path)
 
 print("\n=== FOLD 1 COMPLETE ===")
