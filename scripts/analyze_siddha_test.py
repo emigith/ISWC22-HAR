@@ -195,6 +195,51 @@ predictions = np.asarray(predictions)
 
 
 # ---------------------------------------------------------
+# Export predictions + deterministic LLM-as-judge sample
+# ---------------------------------------------------------
+test_subject_ids = subjects[test_mask]
+
+prediction_rows = pd.DataFrame({
+    "test_index": np.arange(len(truths)),
+    "subject_id": test_subject_ids,
+    "true_id": truths,
+    "true_activity": [ACTIVITY_NAMES[i] for i in truths],
+    "predicted_id": predictions,
+    "predicted_activity": [ACTIVITY_NAMES[i] for i in predictions],
+})
+
+prediction_path = (
+    OUTPUT_DIR
+    / "siddha_test_predictions.csv"
+)
+
+prediction_rows.to_csv(
+    prediction_path,
+    index=False,
+)
+
+errors = prediction_rows[
+    prediction_rows["true_id"]
+    != prediction_rows["predicted_id"]
+].copy()
+
+judge_sample = errors.sample(
+    n=30,
+    random_state=2026,
+).sort_values("test_index")
+
+judge_path = (
+    OUTPUT_DIR
+    / "siddha_llm_judge_samples.csv"
+)
+
+judge_sample.to_csv(
+    judge_path,
+    index=False,
+)
+
+
+# ---------------------------------------------------------
 # Metrics
 # ---------------------------------------------------------
 accuracy = accuracy_score(
@@ -332,5 +377,7 @@ plt.savefig(
 
 print("\nSaved F1:", f1_path)
 print("Saved matrix:", figure_path)
+print("Saved predictions:", prediction_path)
+print("Saved LLM-judge sample:", judge_path)
 
 print("\n=== SIDDHA ANALYSIS COMPLETE ===")
