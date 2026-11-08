@@ -5,14 +5,14 @@ from models.TinyHAR import TinyHAR_Model
 
 INPUT_SHAPE = (1, 1, 100, 3)
 NUMBER_CLASSES = 6
-FILTER_NUM = 16
+FILTER_COUNTS = [16, 20]
 
 
-def main():
+def measure(filter_num):
     model = TinyHAR_Model(
         input_shape=INPUT_SHAPE,
         number_class=NUMBER_CLASSES,
-        filter_num=FILTER_NUM,
+        filter_num=filter_num,
         cross_channel_interaction_type="attn",
         cross_channel_aggregation_type="FC",
         temporal_info_interaction_type="lstm",
@@ -33,26 +33,44 @@ def main():
         verbose=True,
     )
 
+    return {
+        "filters": filter_num,
+        "params_direct": int(params_direct),
+        "params_ptflops": int(params_ptflops),
+        "macs": int(macs),
+        "mmacs": macs / 1_000_000,
+    }
+
+
+def main():
     print("========================================")
-    print(" PAPER-ALIGNED TINYHAR COMPLEXITY")
+    print(" TINYHAR WISDM COMPLEXITY COMPARISON")
     print("========================================")
     print("Input shape:", INPUT_SHAPE)
     print("Classes:", NUMBER_CLASSES)
-    print("Filters:", FILTER_NUM)
-    print("Direct trainable parameters:", params_direct)
-    print("ptflops parameters:", int(params_ptflops))
-    print("MACs:", int(macs))
-    print("MMACs:", macs / 1_000_000)
     print()
+
+    for filter_num in FILTER_COUNTS:
+        result = measure(filter_num)
+        print("----------------------------------------")
+        print("Filters:", result["filters"])
+        print("Direct trainable parameters:", result["params_direct"])
+        print("ptflops parameters:", result["params_ptflops"])
+        print("MACs:", result["macs"])
+        print("MMACs:", result["mmacs"])
+        print()
+
     print("Paper-reported WISDM values:")
     print("Parameters: 16184")
-    print("FLOPs: 1466764")
+    print("Reported FLOPs: 1466764")
     print()
     print(
-        "Note: ptflops reports multiply-accumulate operations (MACs). "
-        "The paper labels its complexity value as FLOPs, so the raw "
-        "ptflops output should be reported separately before deciding "
-        "whether the counting conventions are directly comparable."
+        "Interpretation note: the authors' released notebooks use "
+        "ptflops and print its raw 'macs' output as computational "
+        "complexity. Therefore the raw MAC counts above should be "
+        "treated as the primary reproduced measurements. A separate "
+        "1 MAC ~= 2 FLOPs convention may be mentioned only as an "
+        "alternative counting convention, not as an exact reproduction."
     )
 
 
