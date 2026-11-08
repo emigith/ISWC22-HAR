@@ -115,6 +115,12 @@ Training metrics are saved to:
 results/assessment2_wisdm_fold1/metrics.csv
 ```
 
+The current training script also writes final held-out metrics to:
+
+```text
+results/assessment2_wisdm_fold1/test_metrics.csv
+```
+
 The trained checkpoint is created locally at:
 
 ```text
@@ -240,6 +246,21 @@ errors.sample(n=30, random_state=2026)
 ```
 
 The judge received only the true and predicted activity labels. Raw sensor data, subject metadata, and confidence scores were not supplied.
+
+## Report data figures
+
+After the WISDM and SIDDHA processed data have been created, the two real-data sample figures used in the report can be regenerated with:
+
+```bash
+python scripts/plot_report_samples.py
+```
+
+They are written to:
+
+```text
+report_figures/wisdm_sample.png
+report_figures/siddha_sample.png
+```
 
 ## Main project results
 
