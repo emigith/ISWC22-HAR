@@ -1,0 +1,31 @@
+test_index,subject_id,true_id,true_activity,predicted_id,predicted_activity
+226,6,3,Sitting,7,Eating Soup
+383,6,5,Typing,11,Eating Sandwich
+831,6,11,Eating Sandwich,4,Standing
+986,6,14,Dribbling,2,Stairs
+1062,6,15,Writing,11,Eating Sandwich
+1662,15,5,Typing,10,Drinking
+1728,15,6,Brushing Teeth,17,Folding Clothes
+1978,15,10,Drinking,3,Sitting
+2002,15,10,Drinking,9,Eating Pasta
+2386,15,16,Clapping,15,Writing
+2429,15,16,Clapping,15,Writing
+2764,27,3,Sitting,10,Drinking
+2884,27,5,Typing,7,Eating Soup
+2926,27,5,Typing,7,Eating Soup
+3204,27,9,Eating Pasta,15,Writing
+3602,27,15,Writing,3,Sitting
+3603,27,15,Writing,17,Folding Clothes
+4065,31,4,Standing,10,Drinking
+4142,31,5,Typing,9,Eating Pasta
+4184,31,5,Typing,15,Writing
+4328,31,7,Eating Soup,3,Sitting
+4408,31,8,Eating Chips,7,Eating Soup
+4584,31,11,Eating Sandwich,7,Eating Soup
+4603,31,11,Eating Sandwich,7,Eating Soup
+4898,31,15,Writing,6,Brushing Teeth
+5518,35,6,Brushing Teeth,16,Clapping
+5540,35,7,Eating Soup,3,Sitting
+5699,35,9,Eating Pasta,7,Eating Soup
+5840,35,11,Eating Sandwich,3,Sitting
+5872,35,11,Eating Sandwich,3,Sitting

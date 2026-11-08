@@ -1,0 +1,24 @@
+Warning: module SelfAttention_interaction is treated as a zero-op.
+Warning: module FC is treated as a zero-op.
+Warning: module temporal_LSTM is treated as a zero-op.
+Warning: module Dropout is treated as a zero-op.
+Warning: module Tanh is treated as a zero-op.
+Warning: module Softmax is treated as a zero-op.
+Warning: module Temporal_Weighted_Aggregation is treated as a zero-op.
+Warning: module TinyHAR_Model is treated as a zero-op.
+========================================
+ PAPER-ALIGNED TINYHAR COMPLEXITY
+========================================
+Input shape: (1, 1, 100, 3)
+Classes: 6
+Filters: 16
+Direct trainable parameters: 16184
+ptflops parameters: 16184
+MACs: 750548
+MMACs: 0.750548
+
+Paper-reported WISDM values:
+Parameters: 16184
+FLOPs: 1466764
+
+Note: ptflops reports multiply-accumulate operations (MACs). The paper labels its complexity value as FLOPs, so the raw ptflops output should be reported separately before deciding whether the counting conventions are directly comparable.
